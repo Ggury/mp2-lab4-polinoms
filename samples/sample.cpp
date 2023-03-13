@@ -10,7 +10,7 @@ int main()
 	pol._Set();
 	cout << endl<<"Input operation:";
 	cin >> operation;
-	cou << endl;
+	cout << endl;
 	if (operation == '+')
 	{
 		cout << "second polynom:" << endl;
