@@ -2,7 +2,7 @@
 
 void Polynom::_Push(double mod, size_t deg)
 {
-	if (deg > 999 || deg <= 0)
+	if (deg > 999 || deg < 0)
 	{
 		throw std::out_of_range("wrong input degrees");
 	}
