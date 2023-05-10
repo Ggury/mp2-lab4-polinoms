@@ -1,27 +1,9 @@
-<<<<<<< HEAD
-#include "Polynoms.h"
-=======
 #include "..\include\Polynom.h"
->>>>>>> 1b05400d159f326dc4c95dabc8871702c3fe6b3c
 
 using namespace std;
 
 int main()
 {
-<<<<<<< HEAD
-	Polynom pol;
-	pol._Set();
-	//pol.Printpolynom();
-	//pol.Printpolynom();
-	Polynom pol2;
-	pol2._Set();
-	//pol2._Set();
-	//pol2.Printpolynom();
-	double a = 3;
-	Polynom res;
-	res = pol * pol2;
-	res.Printpolynom();
-=======
 	char operation;
 	Polynom pol;
 	cout << "first monom" << endl;
@@ -76,6 +58,5 @@ int main()
 	//Polynom res;
 	//res = pol * pol2;
 	//res.Printpolynom();
->>>>>>> 1b05400d159f326dc4c95dabc8871702c3fe6b3c
 	return 0;
 }

@@ -25,17 +25,10 @@ struct monom
 };
 
 struct Node {
-<<<<<<< HEAD
-	monom data;
-	Node* next;
-	Node() :next(nullptr) {};
-	Node(monom dt) : data(dt), next(nullptr) {};
-=======
     monom data;
     Node* next;
     Node() :next(nullptr) {};
     Node(monom dt) : data(dt), next(nullptr) {};
->>>>>>> 1b05400d159f326dc4c95dabc8871702c3fe6b3c
     const Node& operator =(const Node& mon)
     {
         this->data = mon.data;
@@ -49,11 +42,7 @@ public:
     Node* Head;
     Node* sorted;
 
-<<<<<<< HEAD
-	List() :Head(new Node),sorted(new Node) {}
-=======
     List() :Head(new Node), sorted(new Node) {}
->>>>>>> 1b05400d159f326dc4c95dabc8871702c3fe6b3c
     void push(monom val)
     {
         Node* newnode = new Node(val);
@@ -95,11 +84,7 @@ public:
             /* Locate the node before the
                point of insertion */
             while (current->next != NULL &&
-<<<<<<< HEAD
-                current->next->data.degree<= newnode->data.degree)
-=======
                 current->next->data.degree <= newnode->data.degree)
->>>>>>> 1b05400d159f326dc4c95dabc8871702c3fe6b3c
             {
                 current = current->next;
             }
