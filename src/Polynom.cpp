@@ -2,9 +2,21 @@
 
 void Polynom::_Push(double mod, size_t deg)
 {
-	if (deg > 999 || deg <= 0)
+	if (deg > 999 || deg < 0)
 	{
 		throw std::out_of_range("wrong input degrees");
+	}
+	Node* hd = monoms.Head;
+
+	while (hd != NULL)
+	{
+		cout << "a" << endl;
+		if (hd->data.degree == deg)
+		{
+			hd->data.modif += mod;
+			return;
+		}
+		hd = hd->next;
 	}
 	monom mon(mod, deg);
 	monoms.push(mon);
@@ -84,13 +96,17 @@ void Polynom::_Set() {
 void Polynom::Printpolynom() {
 	Node* hd = monoms.Head;
 
-	while (hd != NULL)
+	if (hd->data.modif != 0)
 	{
-		cout << "(" << hd->data << ")+";
+		while (hd != NULL)
+		{
+			cout << "(" << hd->data << ")+";
 
-		hd = hd->next;
+			hd = hd->next;
+		}
+		cout << "0" << endl;
+
 	}
-	cout << "0" << endl;
 }
 
 Polynom Polynom::operator+(const Polynom& pol)
@@ -99,8 +115,45 @@ Polynom Polynom::operator+(const Polynom& pol)
 	res.monoms.Head = NULL;
 	Node* tmp1 = monoms.Head;
 	Node* tmp2 = pol.monoms.Head;
-	while (tmp1 && tmp2)
+	//while (tmp1)
+	//{
+	//	while (tmp2)
+	//	{
+	//			if (tmp1->data.degree == tmp2->data.degree)
+	//			{
+	//				res._Push(tmp1->data.modif + tmp2->data.modif, tmp1->data.degree);
+	//				tmp1 = tmp1->next;
+	//				tmp2 = tmp2->next;
+	//				continue;
+	//			}
+	//			if (tmp2->data.degree > tmp1->data.degree)
+	//			{
+	//				res._Push(tmp2->data.modif, tmp2->data.degree);
+	//				tmp2 = tmp2->next;
+	//				continue;
+	//			}
+	//			if (tmp2->data.degree < tmp1->data.degree)
+	//			{
+	//				res._Push(tmp1->data.modif, tmp1->data.degree);
+	//				tmp1 = tmp1->next;
+	//				continue;
+	//			}
+	//	}
+	//}
+	while (tmp1 || tmp2)
 	{
+		if (tmp1 == nullptr)
+		{
+			res._Push(tmp2->data.modif, tmp2->data.degree);
+			tmp2 = tmp2->next;
+			continue;
+		}
+		if (tmp2 == nullptr)
+		{
+			res._Push(tmp1->data.modif, tmp1->data.degree);
+			tmp1 = tmp1->next;
+			continue;
+		}
 		if (tmp1->data.degree == tmp2->data.degree)
 		{
 			res._Push(tmp1->data.modif + tmp2->data.modif, tmp1->data.degree);
@@ -122,16 +175,16 @@ Polynom Polynom::operator+(const Polynom& pol)
 		}
 	}
 
-	while (tmp1)
-	{
-		res._Push(tmp1->data.modif, tmp1->data.degree);
-		tmp1 = tmp1->next;
-	}
-	while (tmp2)
-	{
-		res._Push(tmp2->data.modif, tmp2->data.degree);
-		tmp2 = tmp2->next;
-	}
+	//while (tmp1)
+	//{
+	//	res._Push(tmp1->data.modif, tmp1->data.degree);
+	//	tmp1 = tmp1->next;
+	//}
+	//while (tmp2)
+	//{
+	//	res._Push(tmp2->data.modif, tmp2->data.degree);
+	//	tmp2 = tmp2->next;
+	//}
 	return res;
 }
 

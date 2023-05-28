@@ -18,7 +18,7 @@ struct monom
     }
     friend ostream& operator<<(ostream& ostr, const monom& _monom)
     {
-        ostr << _monom.modif << "x^" << _monom.degree / 100 << "y^" << _monom.degree % 100 / 10 << "z^" << _monom.degree % 10;
+        ostr << _monom.modif << "(" << "x^" << _monom.degree / 100 << "y^" << _monom.degree % 100 / 10 << "z^" << _monom.degree % 10 <<")";
         return ostr;
     }
     //elem(double mdf) :modif(mdf), _next(nullptr) {}
