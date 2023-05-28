@@ -7,19 +7,20 @@ void Polynom::_Push(double mod, size_t deg)
 		throw std::out_of_range("wrong input degrees");
 	}
 	Node* hd = monoms.Head;
-
-	while (hd != NULL)
+	if (mod != 0)
 	{
-		cout << "a" << endl;
-		if (hd->data.degree == deg)
+		while (hd != NULL)
 		{
-			hd->data.modif += mod;
-			return;
+			if (hd->data.degree == deg)
+			{
+				hd->data.modif += mod;
+				return;
+			}
+			hd = hd->next;
 		}
-		hd = hd->next;
+		monom mon(mod, deg);
+		monoms.push(mon);
 	}
-	monom mon(mod, deg);
-	monoms.push(mon);
 }
 
 void Polynom::_AddMonom()
@@ -96,17 +97,15 @@ void Polynom::_Set() {
 void Polynom::Printpolynom() {
 	Node* hd = monoms.Head;
 
-	if (hd->data.modif != 0)
+
+	while (hd != NULL)
 	{
-		while (hd != NULL)
-		{
-			cout << "(" << hd->data << ")+";
+		cout << "(" << hd->data << ")+";
 
-			hd = hd->next;
-		}
-		cout << "0" << endl;
-
+		hd = hd->next;
 	}
+	cout << "0" << endl;
+
 }
 
 Polynom Polynom::operator+(const Polynom& pol)
